@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import {
+  InteractionManager,
   Keyboard,
   Platform,
   ScrollView,
@@ -76,7 +77,9 @@ export default function AddItemScreen({
         purchasePrice: price,
       });
 
-      navigation.goBack();
+      InteractionManager.runAfterInteractions(() => {
+        navigation.goBack();
+      });
     }
   };
 
